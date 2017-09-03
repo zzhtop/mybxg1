@@ -1,4 +1,4 @@
-define(['jquery','template','util','datepicker','language','validate'], function ($,template,util) {
+define(['jquery','template','util','datepicker','language','validate','form'], function ($,template,util) {
     util.setMenu('/teacher/list');
     //获取编辑讲师 的id
     var tcId=util.qs('tc_id');
@@ -30,7 +30,17 @@ define(['jquery','template','util','datepicker','language','validate'], function
         $('#formId').validate({
             sendForm:false,
             valid: function () {
-                console.log(123);
+                //console.log(123);
+                //提交表单
+                $(this).ajaxSubmit({
+                    type:'post',
+                    url:url,
+                    success: function (data) {
+                        if(data.code==200){
+                            location.href='/teacher/list';
+                        }
+                    }
+                })
             },
             description:{
                 tc_name:{
