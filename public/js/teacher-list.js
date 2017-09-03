@@ -2,7 +2,9 @@
  * Created by Administrator on 2017/8/31.
  */
 
-define(['jquery','template','bootstrap'], function ($,template) {
+define(['jquery','template','util','bootstrap'], function ($,template,util) {
+   //设置导航菜单
+    util.setMenu(location.pathname);
     //console.log(111111111);
     //请求后台接口获取列表数据
     $.ajax({
